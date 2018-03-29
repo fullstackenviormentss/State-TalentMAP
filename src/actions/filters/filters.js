@@ -1,9 +1,8 @@
-import axios from 'axios';
 import api from '../../api';
 import { ASYNC_PARAMS, ENDPOINT_PARAMS } from '../../Constants/EndpointParams';
 import { removeDuplicates } from '../../utilities';
 import { getFilterCustomDescription, getPillDescription, getPostOrMissionDescription,
-  doesCodeOrIdMatch, isBooleanFilter } from './helpers';
+  doesCodeOrIdMatch, isBooleanFilter, isPercentageFilter } from './helpers';
 
 export function filtersHasErrored(bool) {
   return {
@@ -72,23 +71,9 @@ export function filtersFetchData(items = { filters: [] }, queryParams = {}, save
         }
         if (item.selectionRef === ENDPOINT_PARAMS.post) {
           dispatch(filtersIsLoading(true));
-          return axios.get(`${api}/orgpost/${item.codeRef}/`)
+          return api.get(`/orgpost/${item.codeRef}/`)
           .then((response) => {
             const obj = Object.assign(response.data, { type: 'post', selectionRef: item.selectionRef, codeRef: item.codeRef });
-            // push the object to cache
-            responses.asyncFilterCache.push(obj);
-            // and return the object
-            return obj;
-          })
-          .catch((error) => {
-            throw error;
-          });
-        }
-        if (item.selectionRef === ENDPOINT_PARAMS.mission) {
-          dispatch(filtersIsLoading(true));
-          return axios.get(`${api}/country/${item.codeRef}/`)
-          .then((response) => {
-            const obj = Object.assign(response.data, { type: 'mission', selectionRef: item.selectionRef, codeRef: item.codeRef });
             // push the object to cache
             responses.asyncFilterCache.push(obj);
             // and return the object
@@ -186,6 +171,9 @@ export function filtersFetchData(items = { filters: [] }, queryParams = {}, save
                       // boolean filters are special since they don't rely on AJAX
                       if (isBooleanFilter(response.item.description)) {
                         mappedObject.description = response.item.title;
+                      } else if (isPercentageFilter(response.item.description)) {
+                        mappedObject.description =
+                          getPillDescription(filterItemObject, response.item.description);
                       } else {
                         // try to get the shortest description since pills should be small
                         mappedObject.description = getPillDescription(filterItemObject);

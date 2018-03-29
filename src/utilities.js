@@ -1,10 +1,8 @@
 import Scroll from 'react-scroll';
 import queryString from 'query-string';
-import distanceInWords from 'date-fns/distance_in_words';
-import format from 'date-fns/format';
+import { distanceInWords, format } from 'date-fns';
 import numeral from 'numeral';
-import cloneDeep from 'lodash/cloneDeep';
-import { get } from 'lodash';
+import { cloneDeep, get, keys, merge as merge$ } from 'lodash';
 import { VALID_PARAMS } from './Constants/EndpointParams';
 import { LOGOUT_ROUTE, LOGIN_ROUTE, LOGIN_REDIRECT } from './login/routes';
 
@@ -335,11 +333,14 @@ export const mapSavedSearchesToSingleQuery = (savedSearchesObject) => {
 
   function merge(...rest) {
     return [].reduce.call(rest, (acc, x) => {
-      Object.keys(x).forEach((k) => {
-        acc[k] = (acc[k] || []).concat(x[k]);
-        acc[k] = acc[k].filter((item, index, self) => self.indexOf(item) === index);
+      const acc$ = merge$({}, acc);
+
+      keys(x).forEach((k) => {
+        acc$[k] = (acc$[k] || []).concat(x[k]);
+        acc$[k] = acc$[k].filter((item, index, self) => self.indexOf(item) === index);
       });
-      return acc;
+
+      return acc$;
     }, {});
   }
 
@@ -405,3 +406,7 @@ export const redirectToLogout = () => {
   const prefix = process.env.PUBLIC_URL || '';
   window.location.assign(`${prefix}${LOGOUT_ROUTE}`);
 };
+
+// returns the base application path,
+// ie, https://hostname:8080/PUBLIC_URL/
+export const getApplicationPath = () => `${window.location.origin}${process.env.PUBLIC_URL}`;

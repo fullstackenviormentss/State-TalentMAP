@@ -24,10 +24,6 @@ describe('SearchFiltersContainerComponent', () => {
       data: [{ isSelected: true }],
     },
     {
-      item: { title: 'mission', description: 'mission', selectionRef: 'ref3' },
-      data: [{ isSelected: true }],
-    },
-    {
       item: { title: 'COLA', description: 'cola', selectionRef: 'ref4', bool: true },
       data: [{ isSelected: false }],
     },
@@ -121,20 +117,6 @@ describe('SearchFiltersContainerComponent', () => {
     expect(toggleValue.b).toBe(2);
   });
 
-  it('can call the onSetAccordionLanguage function', () => {
-    const toggleValue = { a: null, b: null };
-    const wrapper = shallow(
-      <SearchFiltersContainer
-        {...props}
-        setAccordion={(a) => { toggleValue.a = a.main; toggleValue.b = a.sub; }}
-      />,
-    );
-
-    wrapper.instance().onSetAccordionLanguage(1);
-    expect(toggleValue.a).toBe('Language');
-    expect(toggleValue.b).toBe(1);
-  });
-
   it('can call the on[x]SuggestionSelected functions', () => {
     const spy = sinon.spy();
     const wrapper = shallow(
@@ -191,7 +173,7 @@ describe('SearchFiltersContainerComponent', () => {
 
   it('orders the filters in the correct order', () => {
     // filter order defined in the component
-    const filterOrder = ['skill', 'grade', 'post', 'region', 'tod', 'mission'];
+    const filterOrder = ['skill', 'grade', 'post', 'region', 'tod'];
     const wrapper = shallow(
       <SearchFiltersContainer
         {...props}

@@ -37,7 +37,6 @@ describe('filter helpers', () => {
   it('can return correct values for the getPostOrMissionDescription function', () => {
     // all valid properties should return a templated value
     expect(getPostOrMissionDescription({ type: 'post', location: 'Paris', short_name: 'PAR' })).toBe('Paris (Post)');
-    expect(getPostOrMissionDescription({ type: 'mission', location: 'Paris', short_name: 'PAR' })).toBe('PAR (Mission)');
     // but unmapped descriptions will return false
     expect(getPostOrMissionDescription({ type: 'invalid', location: 'Paris', short_name: 'PAR' })).toBe(false);
   });
@@ -51,8 +50,6 @@ describe('filter helpers', () => {
   it('can return correct values for the isBooleanFilter function', () => {
     // all valid properties should return true
     expect(isBooleanFilter('COLA')).toBe(true);
-    expect(isBooleanFilter('postDiff')).toBe(true);
-    expect(isBooleanFilter('dangerPay')).toBe(true);
     expect(isBooleanFilter('domestic')).toBe(true);
     expect(isBooleanFilter('available')).toBe(true);
     expect(isBooleanFilter('invalud')).toBe(false);

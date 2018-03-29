@@ -10,6 +10,7 @@ exports[`SearchFiltersContainerComponent matches snapshot 1`] = `
             className="usa-grid-full"
           >
             <MultiSelectFilter
+              groupAlpha={true}
               item={
                 Object {
                   "data": Array [
@@ -37,6 +38,7 @@ exports[`SearchFiltersContainerComponent matches snapshot 1`] = `
             className="usa-grid-full"
           >
             <MultiSelectFilter
+              groupAlpha={false}
               item={
                 Object {
                   "data": Array [
@@ -80,6 +82,7 @@ exports[`SearchFiltersContainerComponent matches snapshot 1`] = `
               suggestions={Array []}
             />
             <MultiSelectFilter
+              groupAlpha={false}
               item={
                 Object {
                   "data": Array [
@@ -107,6 +110,7 @@ exports[`SearchFiltersContainerComponent matches snapshot 1`] = `
             className="usa-grid-full"
           >
             <MultiSelectFilter
+              groupAlpha={false}
               item={
                 Object {
                   "data": Array [
@@ -136,6 +140,7 @@ exports[`SearchFiltersContainerComponent matches snapshot 1`] = `
             className="usa-grid-full"
           >
             <MultiSelectFilter
+              groupAlpha={false}
               item={
                 Object {
                   "data": Array [
@@ -157,69 +162,6 @@ exports[`SearchFiltersContainerComponent matches snapshot 1`] = `
           "expanded": false,
           "id": "accordion-tod",
           "title": "tod",
-        },
-        Object {
-          "content": <div
-            className="usa-grid-full"
-          >
-            <AutoSuggest
-              customInputProps={Object {}}
-              debounceMillis={350}
-              displayProperty="short_name"
-              getSuggestions={[Function]}
-              id="mission-autosuggest-container"
-              inputId="mission-autosuggest-input"
-              label="mission name"
-              labelSrOnly={true}
-              onSuggestionSelected={[Function]}
-              onSuggestionsClearRequested={[Function]}
-              placeholder="Start typing a mission"
-              queryProperty="id"
-              suggestionTemplate={[Function]}
-              suggestions={Array []}
-            />
-            <MultiSelectFilter
-              item={
-                Object {
-                  "data": Array [
-                    Object {
-                      "isSelected": true,
-                    },
-                  ],
-                  "item": Object {
-                    "description": "mission",
-                    "selectionRef": "ref3",
-                    "title": "mission",
-                  },
-                }
-              }
-              queryParamToggle={[Function]}
-              queryProperty="_id"
-            />
-          </div>,
-          "expanded": false,
-          "id": "accordion-mission",
-          "title": "mission",
-        },
-        Object {
-          "content": <LanguageFilter
-            item={
-              Object {
-                "item": Object {},
-              }
-            }
-            queryParamUpdate={[Function]}
-            selectedAccordion={
-              Object {
-                "main": "",
-                "sub": "",
-              }
-            }
-            setAccordion={[Function]}
-          />,
-          "expanded": false,
-          "id": "accordion-undefined",
-          "title": undefined,
         },
       ]
     }

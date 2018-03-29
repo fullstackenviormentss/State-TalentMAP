@@ -1,7 +1,4 @@
-// scss-lint:disable SelectorDepth
-// scss-lint:disable NestingDepth
 // Nesting depth was needed, otherwise styles broke if placed outside of parent class (.expandable-link)
-
 .profile-page {
   border: solid 0 1px 1px 1px $color-gray-light;
   display: flex;
@@ -36,7 +33,7 @@
     position: relative;
 
     .favorites-top-section {
-      margin-bottom: 2em;
+      margin-bottom: 1.2em;
     }
 
     .condensed-card {
@@ -150,7 +147,7 @@
   }
 
   .current-user-section {
-    // min-height: 350px;
+    min-height: 350px;
   }
 
   .current-user-section-container:last-child {
@@ -240,6 +237,15 @@
     .fa {
       margin-right: 5px;
     }
+
+    h2 {
+      display: inline-block;
+      font-family: inherit;
+      font-size: inherit;
+      font-weight: inherit;
+      line-height: inherit;
+      margin: inherit;
+    }
   }
 
   .dashboard-section-title-small {
@@ -283,11 +289,11 @@
   }
 
   .dashboard-user-profile-picture {
-    border-radius: 75px;
-    height: 100px;
-    margin: 1em 0 2em;
+    display: inline-block;
+    height: $avatar-size;
+    margin: 1em 0;
     vertical-align: middle;
-    width: 100px;
+    width: $avatar-size;
   }
 
   .start-end {
@@ -618,6 +624,11 @@ $padding-no-border: $total-padding - $border;
 
   .bid-list-content {
     margin-top: 85px;
+    text-align: center;
+  }
+
+  .button-wrapper {
+    display: inline-block;
     text-align: center;
   }
 

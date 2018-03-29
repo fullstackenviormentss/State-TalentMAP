@@ -1,6 +1,4 @@
 // Overrides styles for the react-select module
-// scss-lint:disable SelectorFormat
-
 .Select-placeholder,
 .Select--single > .Select-control .Select-value {
   // override for accessibility
@@ -25,7 +23,7 @@
   }
 
   .Select-multi-value-wrapper {
-    overflow: scroll;
+    overflow: auto;
   }
 
   .Select-value-icon {
